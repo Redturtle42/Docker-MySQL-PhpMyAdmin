@@ -1,0 +1,37 @@
+version: "2"
+services:
+  mysqlserver:
+    container_name: mysql_mysqlserver
+    image: mysql:latest
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_DATABASE: testdb
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysqldata:/var/lib/mysql
+    networks:
+      inner:
+        aliases:
+          - mysqlserver
+  myadmin:
+    container_name: mysql_myadmin
+    image: phpmyadmin/phpmyadmin
+    expose:
+      - 80
+    ports:
+      - "80:80"
+    environment:
+      PMA_USER: root
+      PMA_PASSWORD: toor
+      PMA_HOST: mysqlserver
+    networks:
+      inner:
+        aliases:
+          - myadmin
+networks:
+  inner: {}
