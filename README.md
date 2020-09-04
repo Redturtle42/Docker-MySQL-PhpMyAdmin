@@ -9,5 +9,5 @@ You can step into mysql client, which is located in a docker container. Type the
 
 ```sh
 sudo docker-compose exec mysqlserver mysql -u root -proot testdb
-```sh
+```
 
