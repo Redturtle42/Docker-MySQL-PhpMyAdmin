@@ -1,9 +1,13 @@
-# How to run?
+## How to run?
 
-This command will start mysqlserver and phpmyadmin
+This command will start mysqlserver and phpmyadmin on port 80:
 
-## sudo docker-compose up
+```sh
+sudo docker-compose up
+```
+You can step into mysql client, which is located in a docker container. Type the following command to another terminal window:
 
-You can step into mysql client, which is located in a docker container
+```sh
+sudo docker-compose exec mysqlserver mysql -u root -proot testdb
+```sh
 
-## sudo docker-compose exec mysqlserver mysql -u root -ptoor testdb
